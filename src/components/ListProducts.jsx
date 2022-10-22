@@ -41,7 +41,7 @@ const ListProducts = () => {
 						className="listProducts__list"
 						height={height}
 						width={(width + 30)}
-						columnWidth={width / 4 - 5}
+						columnWidth={(width + 30) / 4 - 5}
 						columnCount={4}
 						rowHeight={420}
 						rowCount={listProducts.length / 4}
