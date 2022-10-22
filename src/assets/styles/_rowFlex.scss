@@ -1,0 +1,47 @@
+@use "sass:math";
+
+$wrapMax: 1720px;
+$fields: 30px;
+$offset: 30px;
+$columns: 12;
+$offset_one_side: math.div($offset, 2);
+
+@mixin wrapper-full(){
+  padding-left: $fields;
+  padding-right: $fields;
+}
+
+
+@mixin wrapper(){
+	max-width: ($wrapMax + $fields);
+  margin: 0 auto;
+  @include wrapper-full();
+}
+
+
+@mixin row-offsets(){
+  margin-left: ($offset_one_side * -1);
+  margin-right: ($offset_one_side * -1);
+}
+
+@mixin col-offsets($type){
+  #{$type}-left: $offset_one_side;
+  #{$type}-right: $offset_one_side;
+}
+
+@mixin row-flex(){
+  display: flex;
+  flex-wrap: wrap;
+  @include row-offsets();
+}
+
+@mixin col(){
+  box-sizing: border-box;
+  word-wrap: break-word;
+  @include col-offsets(margin);
+}
+
+@mixin size($n){
+  $val: math.div(100%, $columns) * $n;
+  width: #{calc(#{$val} - #{$offset})};
+}

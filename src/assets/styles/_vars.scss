@@ -1,0 +1,20 @@
+$colWh: #FBFBFB;
+$colDark: #414141;
+$colYel: #FFCC26;
+
+$url-font: '../fonts/';
+$fontMain: 'Poppins';
+
+@mixin font($f-name, $f-path, $f-weight: normal, $f-style: normal){
+	@font-face{
+		font-family: $f-name;
+		src: url('#{$url-font}#{$f-path}.eot');
+		src: url('#{$url-font}#{$f-path}.eot?#iefix') format('embedded-opentype'),
+		url('#{$url-font}#{$f-path}.woff') format('woff'),
+		url('#{$url-font}#{$f-path}.ttf') format('truetype');
+		font-weight: $f-weight;
+		font-style: $f-style;
+    font-display: swap;
+  }
+}
+

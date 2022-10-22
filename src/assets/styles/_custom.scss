@@ -1,0 +1,292 @@
+*{
+	::-webkit-scrollbar {
+		width: 15px;
+	}
+	
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: rgba(65, 65, 65, 0.3);
+	}
+	
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: #FFCC26;
+		border-radius: 20px;
+	}
+	
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: #ffd64f;
+	}
+}
+
+.header{
+	background: $colYel;
+	border: 1px solid $colDark;
+	&__wrapper{
+		@include wrapper();
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		height: 100px;
+	}
+	&__titlePage{
+		flex: none;
+		font-family: 'Anek Telugu';
+		font-style: normal;
+		font-weight: 600;
+		font-size: 32px;
+		line-height: 48px;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+
+		color: $colDark;
+	}
+}
+
+.main{
+	@include wrapper();
+	@include row-flex();
+	justify-content: space-between;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	height: calc(100vh - 102px);
+	overflow: hidden;
+	.favorite{
+		margin-bottom: 100px;
+		height: calc(100% - 200px);
+	}
+}
+
+.favorite, .listProducts, .product{
+	@include col();
+}
+.favorite{
+	@include size(3);
+}
+.listProducts{
+	@include size(8);
+}
+.product{
+	@include size(9);
+}
+.btnFavorite{
+	overflow: hidden;
+	border-radius: 20%;
+	position: relative;
+	svg{
+		position: absolute;
+		width: 110%;
+		height: 110%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		path{
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+.listProducts{
+	&__list{
+		margin-right: -30px;
+		list-style: none;
+		& > div {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.productItem{
+			// @include col();
+			// @include size(2.5);
+		}
+	}
+}
+
+.productItem{
+	&__wrap{
+		min-height: 100%;
+		background: #FFFFFF;
+		border: 1px dashed #414141;
+		border-radius: 30px;
+		padding: 13px 25px 22px;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+	}
+	&__img{
+		max-width: 100%;
+		display: block;
+		overflow: hidden;
+		border-radius: 30px;
+		img{
+			max-height: 200px;
+			width: 100%;
+			object-fit: contain;
+			display: block
+		}
+		
+	}
+	&__name{
+		margin-top: 26px;
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 30px;
+		color: $colDark;
+		margin: auto 0;
+	}
+	&__price{
+		margin-top: 4px;
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 24px;
+		line-height: 36px;
+		color: $colDark;
+	}
+	.btnFavorite{
+		position: absolute;
+		bottom: 17px;
+		right: 35px;
+	}
+}
+
+.favorite{
+	margin-top: 100px;
+	border: 2px dashed #414141;
+	border-radius: 30px;
+	padding: 45px 30px;
+	display: flex;
+	flex-direction: column;
+	&__title{
+		flex: none;
+		font-family: 'Anek Telugu';
+		font-style: normal;
+		font-weight: 600;
+		font-size: 24px;
+		line-height: 36px;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		
+		color: $colDark;
+		margin-bottom: 27px;
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+	&__list{
+		flex: 1;
+		overflow-y: auto;
+	}
+	&__item{
+		margin-bottom: 12px;
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+}
+.favoriteCard{
+	background: #FBFBFB;
+	border-radius: 30px;
+	padding: 11px 15px;
+	display: flex;
+	align-items: center;
+	&__priceFav{
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		.btnFavorite{
+		}
+	}
+	&__img{
+		width: 108px;
+		height: 108px;
+		display: block;
+		border-radius: 30px;
+		overflow: hidden;
+		flex: none;
+		img{
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			display: block
+		}
+		
+	}
+	&__info{
+		margin-left: 20px;
+		flex: 1;
+	}
+	&__name{
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 24px;
+		
+		color: $colDark;
+		margin-bottom: 10px;
+	}
+	&__price{
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 30px;
+		color: $colDark;
+	}
+}
+
+.product{
+	margin-top: 100px;
+	padding-top: 60px;
+	display: flex;
+	// padding-right: 100px;
+	&__img{
+		width: 448px;
+		height: 448px;
+		overflow: hidden;
+		flex: none;
+		img{
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			display: block
+		}
+		
+	}
+	&__info{
+		margin-left:8%;
+		flex: 1;
+		
+	}
+	&__title{
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 64px;
+		line-height: 96px;
+		
+		color: $colDark;
+	}
+	&__priceFav{
+		margin-top: 62px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		
+	}
+	&__price{
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 64px;
+		line-height: 96px;
+		
+		color: $colDark;
+	}
+}

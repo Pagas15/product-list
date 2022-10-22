@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import Favorites from "./components/Favorites";
+import Header from "./components/Header";
+import ListProducts from "./components/ListProducts";
+import Product from "./components/Product";
+import { dispatch } from "./store/store";
+import { requestGetList } from "./utils/scripts";
+
 
 function App() {
+  useEffect(() => {
+    requestGetList({callBack: list => dispatch({type: 'getProducts', list})})
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <main className="main">
+        <Favorites />
+				<Routes>
+					<Route path="/" element={<ListProducts />} />
+					<Route path="/product/:id" element={<Product />} />
+				</Routes>
+      </main>
     </div>
   );
 }
