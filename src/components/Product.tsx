@@ -5,6 +5,7 @@ import { apiBg } from '../utils/const';
 import { requestGetProduct, stateFav } from '../utils/scripts';
 import ButtonFavorite from './btns/ButtonFavorite'
 import { IProduct, UserActionTypes } from '../models'
+import ReactImageMagnify from '@blacklab/react-image-magnify';
 
 
 
@@ -23,7 +24,20 @@ const Product: React.FC = () => {
 	
 	return (<>
 			{product ? <div className='product'>
-				<div className="product__img"><img src={apiBg+product.src} alt="" /></div>
+				<div className="product__img">
+				<ReactImageMagnify 
+					imageProps={{
+						alt: '',
+						src: apiBg+product.src
+					}} 
+					magnifiedImageProps={{
+						src: apiBg+product.src,
+						width: 1200,
+						height: 1800
+					}}
+					
+				/>
+				</div>
 				<div className="product__info">
 					<p className="product__title">{product.name}</p>
 					<div className="product__priceFav">
