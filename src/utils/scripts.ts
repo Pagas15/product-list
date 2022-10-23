@@ -41,3 +41,5 @@ export const requestGetProduct = async ({id, callBack}: {id: number, callBack: (
 		callBack
 	})
 }
+
+export const stateFav = (list: number[], id: number) => !!list.find(key => key === id);

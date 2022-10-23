@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import { urlMain } from '../utils/routes'
 
-const Header = () => {
+const Header: React.FC = () => {
 	return (
 		<header className='header'>
 			<div className='header__wrapper'>
