@@ -4,12 +4,15 @@ import { dispatch } from '../store/store';
 import { apiBg } from '../utils/const';
 import { requestGetProduct } from '../utils/scripts';
 import ButtonFavorite from './btns/ButtonFavorite'
+import { IProduct } from '../models'
 
-const Product = () => {
-	const { id : productID } = useParams();
-	const [ product, setProduct ] = useState({});
+
+const Product: React.FC = () => {
+	const { id : productID } = useParams<{id?: string}>();
+	const productIdNum: number = Number(productID)
+	const [ product, setProduct ] = useState<IProduct>({});
 	useEffect(() => {	
-		requestGetProduct({id: +productID, callBack: result => setProduct(result)})
+		requestGetProduct({id: productIdNum as number, callBack: (result: IProduct) => setProduct(result)})
 	}, [productID])
 
 	const onClickFavorite = () => {

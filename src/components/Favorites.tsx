@@ -1,23 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { IProduct } from '../models';
 import { dispatch, useStoreState } from '../store/store'
 import { apiBg } from '../utils/const';
 import { urlProduct } from '../utils/routes';
-import ButtonFavorite from './btns/ButtonFavorite'
+import ButtonFavorite from './btns/ButtonFavorite';
 
 const Favorites = () => {
 	const listFavorite = useStoreState('favorites');
 	const listProducts = useStoreState('listProducts');
 
-
 	// console.log(listProducts);
-	const removeFavorite = (id) => {
+	const removeFavorite = (id: number) => {
 		dispatch({type: 'removeFavorite', id})
 	}
 
 	const listFavoriteItems = () => {
-		return listFavorite.map(id => {
-			const item = listProducts.find(item => item.id === id);
+		return listFavorite.map((id: number) => {
+			const item = listProducts.find((item: IProduct) => item.id === id);
 			const onClickBtn = () => {
 				removeFavorite(id)
 			}

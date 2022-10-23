@@ -4,13 +4,14 @@ import Favorites from "./components/Favorites";
 import Header from "./components/Header";
 import ListProducts from "./components/ListProducts";
 import Product from "./components/Product";
+import { IProduct } from "./models";
 import { dispatch } from "./store/store";
 import { requestGetList } from "./utils/scripts";
 
 
 function App() {
   useEffect(() => {
-    requestGetList({callBack: list => dispatch({type: 'getProducts', list})})
+    requestGetList({callBack: (list: IProduct[]) => dispatch({type: 'getProducts', list})})
   }, [])
 
   return (
